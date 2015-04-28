@@ -6,6 +6,7 @@ class News_model extends CI_Model {
   {
     $this->load->database();
 
+
   }//end constructor
 
 
@@ -36,6 +37,15 @@ class News_model extends CI_Model {
 
     return $this->db->insert('news', $data);
 }
+
+
+public function showPosts ()
+{
+
+
+
+}
+
 
 
 

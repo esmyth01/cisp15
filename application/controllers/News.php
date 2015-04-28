@@ -6,6 +6,8 @@ class News extends CI_Controller {
     parent::__construct();
     $this->load->model('news_model');
     $this->config->set_item('banner', 'Global News Banner');
+
+
   }
 
   public function index()
@@ -59,4 +61,26 @@ class News extends CI_Controller {
         $this->load->view('news/success');
     }
 }
+
+
+public function rss(){
+
+
+
+  $this->load->helper('xml');
+  $this->load->helper('url');
+
+
+  $this->load->view('news/rss');
+
+
+
+
+
+
+
+}
+
+
+
 }
