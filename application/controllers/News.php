@@ -8,19 +8,18 @@ class News extends CI_Controller {
     $this->config->set_item('banner', 'Global News Banner');
 
 
-  }
+  }//end constructor
+
 
   public function index()
   {
     $data['news'] = $this->news_model->get_news();
     $data['title'] = 'News archive';
 
-    //$this->config->set_item('banner', 'News Banner');
-
-    //$this->load->view('templates/header', $data);
     $this->load->view('news/index', $data);
-    //$this->load->view('templates/footer');
-  }
+
+  }//end index
+
 
   public function view($slug = NULL)
   {
@@ -33,13 +32,14 @@ class News extends CI_Controller {
 
     $data['title'] = $data['news_item']['title'];
 
-    $this->load->view('templates/header', $data);
+
     $this->load->view('news/view', $data);
-    $this->load->view('templates/footer');
-  }
+
+  }//end view
+
 
   public function create()
-{
+  {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
@@ -50,36 +50,29 @@ class News extends CI_Controller {
 
     if ($this->form_validation->run() === FALSE)
     {
-        $this->load->view('templates/header', $data);
-        $this->load->view('news/create', $data);
-        $this->load->view('templates/footer', $data);
+      $this->load->view('templates/header', $data);
+      $this->load->view('news/create', $data);
+      $this->load->view('templates/footer', $data);
 
     }
     else
     {
-        $this->news_model->set_news();
-        $this->load->view('news/success');
+      $this->news_model->set_news();
+      $this->load->view('news/success');
     }
-}
+
+  }//end create
 
 
-public function rss(){
+  public function rss(){
+
+    $this->load->helper('xml');
+    $this->load->helper('url');
 
 
+    $this->load->view('news/rss');
 
-  $this->load->helper('xml');
-  $this->load->helper('url');
-
-
-  $this->load->view('news/rss');
-
-
-
-
-
-
-
-}
+  }
 
 
 
