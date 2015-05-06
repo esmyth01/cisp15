@@ -31,7 +31,6 @@ class Customer extends CI_Controller {
   /**
   * Loads default data into object
   *
-  * Added in v3 - Result object
   *
   * @param none
   * @return void
@@ -40,10 +39,11 @@ class Customer extends CI_Controller {
   public function __construct()
   {
     parent::__construct();
-    /*  $this->load->model('posts_model');
-    $this->config->set_item('banner', 'Global News Banner');
-    */
-  }
+      $this->load->model('customer_model');
+    $this->config->set_item('banner', 'Global Customer Banner');
+
+
+  }//End constructor()
 
 
   /**
@@ -55,7 +55,10 @@ class Customer extends CI_Controller {
   */
   public function index()
   {
-    
+
+    $data['query'] = $this->customer_model->get_customers();
+  //  var_dump($data);
+  //  die;
 
     $data['title'] = 'Customer';
 
